@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Password Generator</h1>
+    <form action="/submit" method="POST">
+        <label for="letters">Number of Letters (alphabets):</label>
+        <input type="number" id="letters" name="letters" min="0" required>
+
+        <label for="digits">Number of Digits (0-9):</label>
+        <input type="number" id="digits" name="digits" min="0" required>
+
+        <label for="specialChars">Number of Special Characters:</label>
+        <input type="number" id="specialChars" name="specialChars" min="0" required>
+
+        <button type="submit">Generate Password</button>
+    </form>
+
+    {% if password %}
+        <div class="result">
+            <p><strong>Generated Password:</strong></p>
+            <p>{{ password }}</p>
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="error">
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
